@@ -1,5 +1,5 @@
 # Use the official .NET SDK image as a build stage
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /app
 COPY . .
@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
 COPY --from=build /app/out .
 
-ENTRYPOINT ["dotnet", "MyApi.dll"]
+ENTRYPOINT ["dotnet", "api.dll"]

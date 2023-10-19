@@ -1,0 +1,25 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./api
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=db;Database=MyDatabase;User=MyUser;Password=123password!#@"
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "123password!#@"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+  spa:
+    build:
+      context: ./spa
+    ports:
+      - "80:80"
