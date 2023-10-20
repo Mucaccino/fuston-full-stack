@@ -1,6 +1,6 @@
 namespace fuston.transacao
 {
-    public enum TipoEnum
+    public enum TransacaoTipoEnum
     {
         DEPOSITO = 0,
         SAQUE = 1,

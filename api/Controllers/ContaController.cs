@@ -39,4 +39,26 @@ public class ContaController : ControllerBase
             return conta;
         }
     }
+
+    [HttpPost]
+    [Route("/conta/")]
+    public IActionResult CreateConta([FromBody]Conta body)
+    {
+        try
+        {
+            using (var context = new ContaContext())
+            {
+                var conta = context.Contas
+                    .Add(body);
+                
+                context.SaveChanges();
+                
+                return new ObjectResult(conta.Entity);
+            }
+        }
+        catch (Exception error)
+        {
+            return new ObjectResult(error);
+        }
+    }
 }

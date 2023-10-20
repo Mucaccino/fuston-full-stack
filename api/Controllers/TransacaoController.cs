@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using fuston.transacao;
 using fuston.contas;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace api.Controllers;
 
@@ -57,10 +58,9 @@ public class TransacaoController : ControllerBase
                 return new ObjectResult(transacao.Entity);
             }
         }
-        catch (System.Exception e)
+        catch (Exception error)
         {
-            
-            throw;
+            return new ObjectResult(error);
         }
     }
 }
