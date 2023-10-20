@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 public class ContaContext : DbContext
 {
-    public DbSet<Agencia> Agencia { get; set; }
-    public DbSet<Conta> Conta { get; set; }
+    public DbSet<Agencia> Agencias { get; set; }
+    public DbSet<Conta> Contas { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

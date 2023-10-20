@@ -5,13 +5,13 @@
 namespace transacao.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateInitialMigrations : Migration
+    public partial class UpdateMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Transacao",
+                name: "Transacoes",
                 columns: table => new
                 {
                     TransacaoId = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace transacao.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transacao", x => x.TransacaoId);
+                    table.PrimaryKey("PK_Transacoes", x => x.TransacaoId);
                 });
         }
 
@@ -29,7 +29,7 @@ namespace transacao.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Transacao");
+                name: "Transacoes");
         }
     }
 }

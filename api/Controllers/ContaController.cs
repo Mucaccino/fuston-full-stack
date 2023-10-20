@@ -4,7 +4,7 @@ using fuston.contas;
 namespace api.Controllers;
 
 [ApiController]
-[Route("[controller]/[action]")]
+[Route("/api/v1")]
 public class ContaController : ControllerBase
 {
     private readonly ILogger<ContaController> _logger;
@@ -13,25 +13,27 @@ public class ContaController : ControllerBase
     {
         _logger = logger;
     }
-
-    [HttpGet(Name = "GetContas")]
+    [HttpGet]
+    [Route("/conta/cliente/{clienteId}")]
     public IEnumerable<Conta> GetContas(int clienteId)
     {
         using (var context = new ContaContext())
         {
-            var contas = context.Conta
-                .Where(c => c.ClienteId == clienteId);
+            var contas = context.Contas
+                .Where(c => c.ClienteId == clienteId)
+                .ToList();
 
             return contas;
         }
     }
 
-    [HttpGet(Name = "GetConta")]
+    [HttpGet]
+    [Route("/conta/{contaId}")]
     public Conta GetConta(int contaId)
     {
         using (var context = new ContaContext())
         {
-            var conta = context.Conta
+            var conta = context.Contas
                 .Single(c => c.ContaId == contaId);
 
             return conta;

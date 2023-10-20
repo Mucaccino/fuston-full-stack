@@ -11,8 +11,8 @@ using fuston.contas;
 namespace contas.Migrations
 {
     [DbContext(typeof(ContaContext))]
-    [Migration("20231020174106_UpdateInitialMigrations")]
-    partial class UpdateInitialMigrations
+    [Migration("20231020184053_UpdateMigrations")]
+    partial class UpdateMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace contas.Migrations
 
                     b.HasKey("AgenciaId");
 
-                    b.ToTable("Agencia");
+                    b.ToTable("Agencias");
 
                     b.HasData(
                         new
@@ -73,7 +73,7 @@ namespace contas.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("Conta");
+                    b.ToTable("Contas");
 
                     b.HasData(
                         new

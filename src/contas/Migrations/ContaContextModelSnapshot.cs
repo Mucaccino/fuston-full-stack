@@ -21,30 +21,6 @@ namespace contas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("fuston.cliente.Cliente", b =>
-                {
-                    b.Property<int>("ClienteId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteId"));
-
-                    b.Property<float>("Documento")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ClienteId");
-
-                    b.ToTable("Cliente");
-                });
-
             modelBuilder.Entity("fuston.contas.Agencia", b =>
                 {
                     b.Property<int>("AgenciaId")
@@ -58,7 +34,7 @@ namespace contas.Migrations
 
                     b.HasKey("AgenciaId");
 
-                    b.ToTable("Agencia");
+                    b.ToTable("Agencias");
 
                     b.HasData(
                         new
@@ -94,7 +70,7 @@ namespace contas.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("Conta");
+                    b.ToTable("Contas");
 
                     b.HasData(
                         new

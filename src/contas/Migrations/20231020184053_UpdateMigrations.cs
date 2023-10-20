@@ -7,13 +7,13 @@
 namespace contas.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateInitialMigrations : Migration
+    public partial class UpdateMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Agencia",
+                name: "Agencias",
                 columns: table => new
                 {
                     AgenciaId = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +22,11 @@ namespace contas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Agencia", x => x.AgenciaId);
+                    table.PrimaryKey("PK_Agencias", x => x.AgenciaId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Conta",
+                name: "Contas",
                 columns: table => new
                 {
                     ContaId = table.Column<int>(type: "int", nullable: false)
@@ -38,28 +38,28 @@ namespace contas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Conta", x => x.ContaId);
+                    table.PrimaryKey("PK_Contas", x => x.ContaId);
                     table.ForeignKey(
-                        name: "FK_Conta_Agencia_AgenciaId",
+                        name: "FK_Contas_Agencias_AgenciaId",
                         column: x => x.AgenciaId,
-                        principalTable: "Agencia",
+                        principalTable: "Agencias",
                         principalColumn: "AgenciaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Conta_Cliente_ClienteId",
+                        name: "FK_Contas_Clientes_ClienteId",
                         column: x => x.ClienteId,
-                        principalTable: "Cliente",
+                        principalTable: "Clientes",
                         principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Agencia",
+                table: "Agencias",
                 columns: new[] { "AgenciaId", "Numero" },
                 values: new object[] { 1, 1010f });
 
             migrationBuilder.InsertData(
-                table: "Conta",
+                table: "Contas",
                 columns: new[] { "ContaId", "AgenciaId", "ClienteId", "Numero", "Saldo" },
                 values: new object[,]
                 {
@@ -68,13 +68,13 @@ namespace contas.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Conta_AgenciaId",
-                table: "Conta",
+                name: "IX_Contas_AgenciaId",
+                table: "Contas",
                 column: "AgenciaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Conta_ClienteId",
-                table: "Conta",
+                name: "IX_Contas_ClienteId",
+                table: "Contas",
                 column: "ClienteId");
         }
 
@@ -82,13 +82,10 @@ namespace contas.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Conta");
+                name: "Contas");
 
             migrationBuilder.DropTable(
-                name: "Agencia");
-
-            migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Agencias");
         }
     }
 }

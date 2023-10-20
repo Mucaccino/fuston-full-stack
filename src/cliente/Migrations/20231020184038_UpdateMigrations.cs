@@ -7,13 +7,13 @@
 namespace cliente.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateInitialMigrations : Migration
+    public partial class UpdateMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Clientes",
                 columns: table => new
                 {
                     ClienteId = table.Column<int>(type: "int", nullable: false)
@@ -24,11 +24,11 @@ namespace cliente.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente", x => x.ClienteId);
+                    table.PrimaryKey("PK_Clientes", x => x.ClienteId);
                 });
 
             migrationBuilder.InsertData(
-                table: "Cliente",
+                table: "Clientes",
                 columns: new[] { "ClienteId", "Documento", "Nome", "Password" },
                 values: new object[,]
                 {
@@ -41,7 +41,7 @@ namespace cliente.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Clientes");
         }
     }
 }

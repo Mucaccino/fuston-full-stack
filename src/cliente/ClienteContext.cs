@@ -6,7 +6,7 @@ using dotenv.net;
 
 public class ClienteContext : DbContext
 {
-    public DbSet<Cliente> Cliente { get; set; }
+    public DbSet<Cliente> Clientes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

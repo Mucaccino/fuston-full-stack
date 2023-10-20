@@ -11,8 +11,8 @@ using fuston.cliente;
 namespace cliente.Migrations
 {
     [DbContext(typeof(ClienteContext))]
-    [Migration("20231020174059_UpdateInitialMigrations")]
-    partial class UpdateInitialMigrations
+    [Migration("20231020184038_UpdateMigrations")]
+    partial class UpdateMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace cliente.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.ToTable("Cliente");
+                    b.ToTable("Clientes");
 
                     b.HasData(
                         new

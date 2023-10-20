@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class TransacaoContext : DbContext
 {
-    public DbSet<Transacao> Transacao { get; set; }
+    public DbSet<Transacao> Transacoes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

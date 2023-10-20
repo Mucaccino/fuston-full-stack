@@ -42,7 +42,7 @@ namespace cliente.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.ToTable("Cliente");
+                    b.ToTable("Clientes");
 
                     b.HasData(
                         new

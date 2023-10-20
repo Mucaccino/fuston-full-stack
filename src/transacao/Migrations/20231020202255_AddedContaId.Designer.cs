@@ -11,8 +11,8 @@ using fuston.transacao;
 namespace transacao.Migrations
 {
     [DbContext(typeof(TransacaoContext))]
-    [Migration("20231020174112_UpdateInitialMigrations")]
-    partial class UpdateInitialMigrations
+    [Migration("20231020202255_AddedContaId")]
+    partial class AddedContaId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace transacao.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransacaoId"));
 
+                    b.Property<int>("ContaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
@@ -40,7 +43,20 @@ namespace transacao.Migrations
 
                     b.HasKey("TransacaoId");
 
-                    b.ToTable("Transacao");
+                    b.HasIndex("ContaId");
+
+                    b.ToTable("Transacoes");
+                });
+
+            modelBuilder.Entity("fuston.transacao.Transacao", b =>
+                {
+                    b.HasOne("fuston.contas.Conta", "Conta")
+                        .WithMany()
+                        .HasForeignKey("ContaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Conta");
                 });
 #pragma warning restore 612, 618
         }
