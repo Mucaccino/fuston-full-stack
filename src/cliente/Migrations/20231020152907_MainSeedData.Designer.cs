@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fuston.cliente;
 
@@ -10,9 +11,11 @@ using fuston.cliente;
 namespace cliente.Migrations
 {
     [DbContext(typeof(TransacaoContext))]
-    partial class TransacaoContextModelSnapshot : ModelSnapshot
+    [Migration("20231020152907_MainSeedData")]
+    partial class MainSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,10 +39,6 @@ namespace cliente.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
@@ -49,15 +48,13 @@ namespace cliente.Migrations
                         {
                             Id = 1,
                             Documento = 1.4215866E+09f,
-                            Nome = "Murillo L Do Carmo",
-                            Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
+                            Nome = "Murillo L Do Carmo"
                         },
                         new
                         {
                             Id = 2,
                             Documento = 5.866689E+10f,
-                            Nome = "Cliente Teste",
-                            Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
+                            Nome = "Cliente Teste"
                         });
                 });
 #pragma warning restore 612, 618
