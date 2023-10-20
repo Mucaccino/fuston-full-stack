@@ -1,5 +1,6 @@
 .PHONY: build run stop clean
-DIR_LIBRARIES = src
+LIBDIR = src
+SPADIR = spa
 
 build:
 	docker-compose build
@@ -13,3 +14,16 @@ stop:
 clean:
 	docker-compose down --rmi all --volumes --remove-orphans
 
+db-update:
+	cd ./src/cliente && dotnet ef database update
+	cd ./src/contas && dotnet ef database update
+	cd ./src/transacao && dotnet ef database update
+
+spa-setup:
+	make -C $(SPADIR) install
+
+spa-dev:
+	make -C $(SPADIR) dev
+
+spa-build:
+	make -C $(SPADIR) build
