@@ -2,7 +2,7 @@
 
 public class Transacao
 {
-    public required int Id { get; set; }
-    public required TipoEnum Tipo { get; set; }
-    public required float Valor { get; set; }
+    public int TransacaoId { get; set; }
+    public TipoEnum Tipo { get; set; }
+    public float Valor { get; set; }
 }

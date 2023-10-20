@@ -7,12 +7,12 @@ using System.Collections.Generic;
 
 public class TransacaoContext : DbContext
 {
-    public DbSet<Transacao> Transacoes { get; set; }
+    public DbSet<Transacao> Transacao { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING") == null) {
-            DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {"../.env"}));
+            DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {"../../.env"}));
         }
         
         optionsBuilder.UseSqlServer(

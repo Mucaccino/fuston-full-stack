@@ -11,8 +11,8 @@ using fuston.contas;
 namespace contas.Migrations
 {
     [DbContext(typeof(ContaContext))]
-    [Migration("20231019194738_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231020174106_UpdateInitialMigrations")]
+    partial class UpdateInitialMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,49 +24,36 @@ namespace contas.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("fuston.cliente.Cliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<float>("Documento")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cliente");
-                });
-
             modelBuilder.Entity("fuston.contas.Agencia", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AgenciaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AgenciaId"));
 
                     b.Property<float>("Numero")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.HasKey("AgenciaId");
 
                     b.ToTable("Agencia");
+
+                    b.HasData(
+                        new
+                        {
+                            AgenciaId = 1,
+                            Numero = 1010f
+                        });
                 });
 
             modelBuilder.Entity("fuston.contas.Conta", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ContaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContaId"));
 
                     b.Property<int>("AgenciaId")
                         .HasColumnType("int");
@@ -80,13 +67,31 @@ namespace contas.Migrations
                     b.Property<float>("Saldo")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.HasKey("ContaId");
 
                     b.HasIndex("AgenciaId");
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("Contas");
+                    b.ToTable("Conta");
+
+                    b.HasData(
+                        new
+                        {
+                            ContaId = 1,
+                            AgenciaId = 1,
+                            ClienteId = 1,
+                            Numero = 123456790f,
+                            Saldo = 1100f
+                        },
+                        new
+                        {
+                            ContaId = 2,
+                            AgenciaId = 1,
+                            ClienteId = 2,
+                            Numero = 987654340f,
+                            Saldo = 2200f
+                        });
                 });
 
             modelBuilder.Entity("fuston.contas.Conta", b =>

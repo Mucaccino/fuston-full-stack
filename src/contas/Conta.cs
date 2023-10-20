@@ -3,9 +3,11 @@ using fuston.cliente;
 
 public class Conta
 {
-    public required int Id { get; set; }
-    public required Agencia Agencia { get; set; }
-    public required float Numero { get; set; }
-    public required float Saldo { get; set; }
-    public required Cliente Cliente {get; set; }
+    public int ContaId { get; set; }
+    public int AgenciaId { get; set; }
+    public Agencia? Agencia { get; set; }
+    public float Numero { get; set; }
+    public float Saldo { get; set; }
+    public int ClienteId {get; set; }
+    public Cliente? Cliente {get; set; }
 }

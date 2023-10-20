@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using dotenv.net;
 
-public class TransacaoContext : DbContext
+public class ClienteContext : DbContext
 {
-    public DbSet<Cliente> Clientes { get; set; }
+    public DbSet<Cliente> Cliente { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING") == null) {
-            DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {"../.env"}));
+            DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {"../../.env"}));
         }
 
         optionsBuilder.UseSqlServer(
@@ -23,14 +23,14 @@ public class TransacaoContext : DbContext
         modelBuilder.Entity<Cliente>().HasData(
                 new Cliente
                 {
-                    Id = 1,
+                    ClienteId = 1,
                     Nome = "Murillo L Do Carmo",
                     Documento = 01421586584,
                     Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
                 },
                 new Cliente
                 {
-                    Id = 2,
+                    ClienteId = 2,
                     Nome = "Cliente Teste",
                     Documento = 58666889640,
                     Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="

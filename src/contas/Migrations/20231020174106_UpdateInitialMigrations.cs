@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace contas.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdateInitialMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,34 +16,20 @@ namespace contas.Migrations
                 name: "Agencia",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    AgenciaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Numero = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Agencia", x => x.Id);
+                    table.PrimaryKey("PK_Agencia", x => x.AgenciaId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Conta",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Documento = table.Column<float>(type: "real", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cliente", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Contas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ContaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AgenciaId = table.Column<int>(type: "int", nullable: false),
                     Numero = table.Column<float>(type: "real", nullable: false),
@@ -50,29 +38,43 @@ namespace contas.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contas", x => x.Id);
+                    table.PrimaryKey("PK_Conta", x => x.ContaId);
                     table.ForeignKey(
-                        name: "FK_Contas_Agencia_AgenciaId",
+                        name: "FK_Conta_Agencia_AgenciaId",
                         column: x => x.AgenciaId,
                         principalTable: "Agencia",
-                        principalColumn: "Id",
+                        principalColumn: "AgenciaId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Contas_Cliente_ClienteId",
+                        name: "FK_Conta_Cliente_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
-                        principalColumn: "Id",
+                        principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Agencia",
+                columns: new[] { "AgenciaId", "Numero" },
+                values: new object[] { 1, 1010f });
+
+            migrationBuilder.InsertData(
+                table: "Conta",
+                columns: new[] { "ContaId", "AgenciaId", "ClienteId", "Numero", "Saldo" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, 123456790f, 1100f },
+                    { 2, 1, 2, 987654340f, 2200f }
+                });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Contas_AgenciaId",
-                table: "Contas",
+                name: "IX_Conta_AgenciaId",
+                table: "Conta",
                 column: "AgenciaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contas_ClienteId",
-                table: "Contas",
+                name: "IX_Conta_ClienteId",
+                table: "Conta",
                 column: "ClienteId");
         }
 
@@ -80,7 +82,7 @@ namespace contas.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Contas");
+                name: "Conta");
 
             migrationBuilder.DropTable(
                 name: "Agencia");

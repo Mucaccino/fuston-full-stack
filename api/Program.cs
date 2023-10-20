@@ -1,3 +1,5 @@
+using dotenv.net;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +24,14 @@ app.UseSwaggerUI(options =>
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
 });
+
+// Configure .env
+if(String.IsNullOrEmpty(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING"))) {
+    DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {"../.env"}));
+}
+
+Console.WriteLine("---> " + Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING") == null);
+Console.WriteLine(Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING"));
 
 app.UseHttpsRedirection();
 

@@ -11,8 +11,8 @@ using fuston.transacao;
 namespace transacao.Migrations
 {
     [DbContext(typeof(TransacaoContext))]
-    [Migration("20231019194827_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231020174112_UpdateInitialMigrations")]
+    partial class UpdateInitialMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,11 +26,11 @@ namespace transacao.Migrations
 
             modelBuilder.Entity("fuston.transacao.Transacao", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TransacaoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransacaoId"));
 
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
@@ -38,9 +38,9 @@ namespace transacao.Migrations
                     b.Property<float>("Valor")
                         .HasColumnType("real");
 
-                    b.HasKey("Id");
+                    b.HasKey("TransacaoId");
 
-                    b.ToTable("Transacoes");
+                    b.ToTable("Transacao");
                 });
 #pragma warning restore 612, 618
         }

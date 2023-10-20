@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using fuston.cliente;
 
@@ -10,12 +9,10 @@ using fuston.cliente;
 
 namespace cliente.Migrations
 {
-    [DbContext(typeof(TransacaoContext))]
-    [Migration("20231020155358_PasswordMigrationSeed")]
-    partial class PasswordMigrationSeed
+    [DbContext(typeof(ClienteContext))]
+    partial class ClienteContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,11 +23,11 @@ namespace cliente.Migrations
 
             modelBuilder.Entity("fuston.cliente.Cliente", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ClienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteId"));
 
                     b.Property<float>("Documento")
                         .HasColumnType("real");
@@ -43,21 +40,21 @@ namespace cliente.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ClienteId");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("Cliente");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            ClienteId = 1,
                             Documento = 1.4215866E+09f,
                             Nome = "Murillo L Do Carmo",
                             Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
                         },
                         new
                         {
-                            Id = 2,
+                            ClienteId = 2,
                             Documento = 5.866689E+10f,
                             Nome = "Cliente Teste",
                             Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
