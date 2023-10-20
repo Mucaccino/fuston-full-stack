@@ -1,14 +1,14 @@
 # Use the official Node.js image as a build stage
-FROM node:14 AS build
+FROM node:18 AS build
 
 WORKDIR /app
 COPY . .
 
 # Build the application
-# RUN npm install
-# RUN npm run build
+RUN npm install
+RUN npm run build
 
 # Use a smaller NGINX image for the final stage
-# FROM nginx:1.21
+FROM nginx:1.21
 
-# COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
