@@ -1,6 +1,10 @@
 {
     "recommendations": [
         "kreativ-software.csharpextensions",
-        "patcx.vscode-nuget-gallery"
+        "patcx.vscode-nuget-gallery",
+        "fernandoescolar.vscode-solution-explorer",
+        "ms-dotnettools.vscodeintellicode-csharp",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime"
     ]
 }

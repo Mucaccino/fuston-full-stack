@@ -1,4 +1,5 @@
 .PHONY: build run stop clean
+DIR_LIBRARIES = src
 
 build:
 	docker-compose build
@@ -11,3 +12,4 @@ stop:
 
 clean:
 	docker-compose down --rmi all --volumes --remove-orphans
+

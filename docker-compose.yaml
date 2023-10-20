@@ -8,7 +8,7 @@ services:
     depends_on:
       - db
     environment:
-      ConnectionStrings__DefaultConnection: "Server=db;Database=MyDatabase;User=MyUser;Password=123password!#@"
+      ConnectionStrings__DefaultConnection: "Server=localhost,1433;Database=MyDatabase;User=sa;Password=123password!#@"
 
   db:
     image: mcr.microsoft.com/mssql/server:2019-latest
