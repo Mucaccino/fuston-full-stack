@@ -2,6 +2,6 @@
 
 public class Agencia
 {
-    public required int AgenciaId { get; set; }
-    public required float Numero { get; set; }
+    public int AgenciaId { get; set; }
+    public required string Numero { get; set; }
 }

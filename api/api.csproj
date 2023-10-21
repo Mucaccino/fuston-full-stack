@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="dotenv.net" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -16,6 +17,7 @@
     <ProjectReference Include="..\src\cliente\cliente.csproj" />
     <ProjectReference Include="..\src\contas\contas.csproj" />
     <ProjectReference Include="..\src\transacao\transacao.csproj" />
+    <ProjectReference Include="..\src\utils\utils.csproj" />
   </ItemGroup>
 
 </Project>

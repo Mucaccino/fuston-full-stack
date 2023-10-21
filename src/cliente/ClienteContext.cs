@@ -25,15 +25,15 @@ public class ClienteContext : DbContext
                 {
                     ClienteId = 1,
                     Nome = "Murillo L Do Carmo",
-                    Documento = 01421586584,
-                    Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
+                    Documento = "01421586584",
+                    Password = "$2a$11$Na7BCqtllJJC.Wz.pCBbGu9ekLI99UfjjK3fRQ/pRCQ9Csl66t.Tq"
                 },
                 new Cliente
                 {
                     ClienteId = 2,
                     Nome = "Cliente Teste",
-                    Documento = 58666889640,
-                    Password = "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw="
+                    Documento = "58666889640",
+                    Password = "$2a$11$Na7BCqtllJJC.Wz.pCBbGu9ekLI99UfjjK3fRQ/pRCQ9Csl66t.Tq"
                 }
             );
     }

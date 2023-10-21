@@ -17,27 +17,23 @@ public class ContaController : ControllerBase
     [Route("/conta/cliente/{clienteId}")]
     public IEnumerable<Conta> GetContas(int clienteId)
     {
-        using (var context = new ContaContext())
-        {
-            var contas = context.Contas
-                .Where(c => c.ClienteId == clienteId)
-                .ToList();
+        using var context = new ContaContext();
+        var contas = context.Contas
+            .Where(c => c.ClienteId == clienteId)
+            .ToList();
 
-            return contas;
-        }
+        return contas;
     }
 
     [HttpGet]
     [Route("/conta/{contaId}")]
     public Conta GetConta(int contaId)
     {
-        using (var context = new ContaContext())
-        {
-            var conta = context.Contas
-                .Single(c => c.ContaId == contaId);
+        using var context = new ContaContext();
+        var conta = context.Contas
+            .Single(c => c.ContaId == contaId);
 
-            return conta;
-        }
+        return conta;
     }
 
     [HttpPost]
@@ -46,15 +42,13 @@ public class ContaController : ControllerBase
     {
         try
         {
-            using (var context = new ContaContext())
-            {
-                var conta = context.Contas
-                    .Add(body);
-                
-                context.SaveChanges();
-                
-                return new ObjectResult(conta.Entity);
-            }
+            using var context = new ContaContext();
+            var conta = context.Contas
+                .Add(body);
+
+            context.SaveChanges();
+
+            return new ObjectResult(conta.Entity);
         }
         catch (Exception error)
         {

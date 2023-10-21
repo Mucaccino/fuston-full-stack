@@ -32,8 +32,8 @@ namespace cliente.Migrations
                 columns: new[] { "ClienteId", "Documento", "Nome", "Password" },
                 values: new object[,]
                 {
-                    { 1, 1.4215866E+09f, "Murillo L Do Carmo", "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw=" },
-                    { 2, 5.866689E+10f, "Cliente Teste", "Gt9Yc4AiIvmsC1QQbe2RZsCIqvoYlst2xbz0Fs8aHnw=" }
+                    { 1, 1.4215866E+09f, "Murillo L Do Carmo", "$2a$11$Na7BCqtllJJC.Wz.pCBbGu9ekLI99UfjjK3fRQ/pRCQ9Csl66t.Tq" },
+                    { 2, 5.866689E+10f, "Cliente Teste", "$2a$11$Na7BCqtllJJC.Wz.pCBbGu9ekLI99UfjjK3fRQ/pRCQ9Csl66t.Tq" }
                 });
         }
 

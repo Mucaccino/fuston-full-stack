@@ -26,7 +26,7 @@ public class ContaContext : DbContext
                 new Agencia
                 {
                     AgenciaId = 1,
-                    Numero = 1010,
+                    Numero = "1010",
                 }
             );
 
@@ -35,7 +35,7 @@ public class ContaContext : DbContext
                 {
                     ContaId = 1,
                     AgenciaId = 1,
-                    Numero = 123456789,
+                    Numero = "123456789",
                     ClienteId = 1,
                     Saldo = 1100,
                 },
@@ -43,7 +43,7 @@ public class ContaContext : DbContext
                 {
                     ContaId = 2,
                     AgenciaId = 1,
-                    Numero = 987654321,
+                    Numero = "987654321",
                     ClienteId = 2,
                     Saldo = 2200,
                 }

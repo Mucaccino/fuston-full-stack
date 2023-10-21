@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transacao", "src\transacao\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cliente", "src\cliente\cliente.csproj", "{602BC4E1-E8B1-410B-A1B5-1A952DBAB90D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utils", "src\utils\utils.csproj", "{602BC4E1-E8B1-410B-A1B5-1A952DBAB90D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

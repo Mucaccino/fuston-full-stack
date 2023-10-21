@@ -20,27 +20,23 @@ public class TransacaoController : ControllerBase
     [Route("/transacao/{transacaoId}")]
     public Transacao GetTransacaoById(int transacaoId)
     {
-        using (var context = new TransacaoContext())
-        {
-            var transacao = context.Transacoes
-                .Single(t => t.TransacaoId == transacaoId);
+        using var context = new TransacaoContext();
+        var transacao = context.Transacoes
+            .Single(t => t.TransacaoId == transacaoId);
 
-            return transacao;
-        }
+        return transacao;
     }
 
     [HttpGet]
     [Route("/transacao/conta/{contaId}")]
     public IEnumerable<Transacao> GetTransacoesByConta(int contaId)
     {
-        using (var context = new TransacaoContext())
-        {
-            var transacoes = context.Transacoes
-                .Where(t => t.ContaId == contaId)
-                .ToList();
+        using var context = new TransacaoContext();
+        var transacoes = context.Transacoes
+            .Where(t => t.ContaId == contaId)
+            .ToList();
 
-            return transacoes;
-        }
+        return transacoes;
     }
 
     [HttpPost]
@@ -48,19 +44,17 @@ public class TransacaoController : ControllerBase
     public virtual IActionResult CreateTransacao([FromBody]Transacao body) {
         try
         {
-            using (var context = new TransacaoContext())
-            {
-                var transacao = context.Transacoes
-                    .Add(body);
-                
-                context.SaveChanges();
-                
-                return new ObjectResult(transacao.Entity);
-            }
+            using var context = new TransacaoContext();
+            var transacao = context.Transacoes
+                .Add(body);
+
+            context.SaveChanges();
+
+            return new ObjectResult(transacao.Entity);
         }
-        catch (Exception error)
+        catch (Exception e)
         {
-            return new ObjectResult(error);
+            return new ObjectResult(e);
         }
     }
 }

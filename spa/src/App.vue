@@ -5,14 +5,15 @@ import MainScreen from './components/MainScreen.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Fuston logo" class="logo" src="@/assets/fuston-logo.png" width="125" height="125" />
 
     <div class="wrapper">
       <MainScreen msg="Fuston Full-Stack" />
 
       <nav>
-        <RouterLink to="/">Entrada</RouterLink>
-        <RouterLink to="/transacao">Transação</RouterLink>
+      <RouterLink to="/">Entrada</RouterLink>
+      <RouterLink to="/transacao">Transação</RouterLink>
+      <RouterLink to="/login">Sair</RouterLink>
       </nav>
     </div>
   </header>
